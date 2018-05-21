@@ -1,0 +1,12 @@
+<%
+    event.date_start = new Date(parseInt(event.start));
+	event.date_end = new Date(parseInt(event.end));
+%>
+
+<h4>About Event : </h4>
+<p>
+    <%= event.description %>
+</p>
+
+<h4>Event Date : </h4>
+<span> <%= event.date_start.getDate() %> <%= calendar.locale["m" + event.date_start.getMonth()] %> <%= event.date_start.getFullYear() %> <br /></span>

@@ -1,0 +1,100 @@
+
+<div class="row">
+    <div class="col-lg-8 col-md-10" style="margin:auto">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mb-3">Select a Police Stations to view the responses</h4>
+                <div class="form-group">
+                    <label for="sel1">Select list:</label>
+                    <select class="form-control" id="sel1">
+                        <option value="" disabled selected>Select Options</option>
+                        {{#each records}}
+                            <option value="{{replacespace @key}}">{{@key}}</option>
+                        {{/each}}
+                    </select>
+                </div>          
+            </div>
+        </div>
+    </div><!-- /# column -->
+</div>
+
+{{#each records}}
+<div class="row" id="div-{{replacespace @key}}" style="display:none">
+    <div class="col-lg-8 col-md-10" style="margin:auto">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mb-3">{{@key}}</h4>
+                <canvas id="{{@key}}"></canvas>
+            </div>
+        </div>
+    </div><!-- /# column -->
+</div>
+{{/each}}
+
+
+
+{{#contentFor 'pageScripts'}}
+
+<script src="assets/js/lib/chart-js/Chart.bundle.js"></script>
+
+
+<script>
+
+    jQuery('#sel1').selectize({
+        maxItems:1000 ,
+        onItemAdd : function(value) {
+            console.log(value);
+            console.log("Showing");
+            jQuery("#div-" + value ).fadeIn();
+        } ,
+        onItemRemove : function(value) {
+            console.log(value);
+            console.log("Hiding");
+            jQuery("#div-" + value ).fadeOut();
+        }
+    });
+
+</script>
+
+{{#each records}}
+<script>
+    var ctx = document.getElementById( "{{@key}}" );
+    ctx.height = 150;
+    var myChart = new Chart( ctx, {
+        type: 'doughnut',
+        data: {
+            datasets: [ {
+                data: [ {{this}} ],
+                backgroundColor: [
+                                    "red",
+                                    "pink",
+                                    "blue",
+                                    "yellow",
+                                    "green",  
+                                ],
+                hoverBackgroundColor: [
+                                    "red",
+                                    "pink",
+                                    "blue",
+                                    "yellow",
+                                    "green",  
+                                ],
+
+                            } ],
+            labels: [
+                            "1 Star",
+                            "2 Star",
+                            "3 Star",
+                            "4 Star",
+                            "5 Star"
+                        ]
+        },
+        options: {
+            responsive: true
+        }
+    } );
+</script>
+    
+{{/each}}
+{{/contentFor}}
+

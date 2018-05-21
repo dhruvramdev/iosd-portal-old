@@ -1,0 +1,42 @@
+{{!-- <div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h1>Welcome to Admin Panel</h1>
+            <ul class="list-group mt-3">
+                <li class="list-group-item"><a href="/library-admin">Library Management</a></li>
+                <li class="list-group-item"><a href="/events-admin">Events Management</a></li>
+                <li class="list-group-item"><a href="/playlist-admin">Playlists Management</a></li>
+                <li class="list-group-item"><a href="/videos-admin">Videos Management</a></li>
+            </ul>
+        </div>
+    </div>
+</div> --}}
+
+<div class="col-sm-12">
+	<div class="card">
+		<div class="card-header">
+			<a href="/admin/library/new"><button class="btn btn-success">Add New Book</button></a>
+		</div>
+	</div>
+</div>
+
+{{#each books}}
+
+<div class="col-md-6">
+	<div class="card">
+		<div class="card-body row">
+			<div class="col-sm-4">
+				<img src="{{this.image}}">
+			</div>
+			<div class="col-sm-8">
+				<h4 class="card-title mb-3">{{this.name}}</h4>
+				<p class="card-text">{{shorten this.description 300 }}</p>
+				<a href="book/edit/{{this._id}}" class="card-link">Edit</a>
+				<a href="book/delete/{{this._id}}" class="card-link">Delete</a>	
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+{{/each}}

@@ -1,0 +1,18 @@
+{{#contentFor 'pageStyles' }}
+  <link rel="stylesheet" type="text/css" href="/assets/css/medium.css">
+
+{{/contentFor}}
+
+<div class="container">
+  <article class="main">
+    <aside class="post-meta">
+      <div class="author-avatar"></div>
+      <div class="post-info">
+        <p><a href="http://www.filipwieland.com/" class="author-name">{{post.author}}</a></p>
+        <p class="text-muted">Created on <strong>{{post.pubDate}}</strong>.</p>
+      </div>
+    </aside>
+    <h1>{{post.title}}</h1>
+    {{{post.content}}}
+  </article>
+</div>

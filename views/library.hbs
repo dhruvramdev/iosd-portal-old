@@ -1,0 +1,88 @@
+{{#contentFor 'pageStyles'}}
+	<link rel="stylesheet" type="text/css" href="/assets/css/library.css">
+{{/contentFor}}
+
+
+<div class="animated fadeIn container">
+
+
+	<section id="book_list">
+		<div class="page-title category-title" {{!-- style="padding-left: calc( 50vw - 37.5rem )" --}}>
+			<h1>Books</h1>
+		</div>
+		<div class="toolbar row">
+			<div class="filter-options col-sm-12 col-md-9">
+				<a href="#" class="filter-item active" data-group="all">All Categories</a>
+
+				{{#each categories }}
+				<a href="#" class="filter-item" data-group="{{this}}">{{this}}</a>              
+				{{/each}}
+			</div>
+
+			<div class="col-sm-12 col-md-3">
+				<select class="sort-options form-control">
+					<option value="" disabled selected>Sort by</option>
+					<option value="" >Featured</option>
+					<option value="title">Alphabetical</option>
+					<option value="date-created">Published</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="grid-shuffle">
+			<ul id="grid" class="row">
+				{{#each books}}
+				<li class="book-item col-sm-12 col-md-6" data-groups='["{{this.category}}"]' data-date-created='{{this.year}}' data-title='{{this.name}}' data-color='{{this.color}}'>
+					<div class="bk-img">
+						<div class="bk-wrapper">
+							<div class="bk-book bk-bookdefault">
+								<div class="bk-front">
+									<div class="bk-cover" style="background-image: url('{{this.image}}') ; background-size:     cover;"></div>
+								</div>
+								<div class="bk-back"></div>
+								<div class="bk-left"></div>
+							</div>
+						</div>
+					</div>
+					<div class="item-details">
+						<h3 class="book-item_title">{{this.name}}</h3>
+						<p class="author">by {{this.author}}&bull; {{this.year}}</p>
+						<p>{{this.description}}</p>
+						<a href="#" class="btn btn-info">Details</a>
+					</div>
+
+					<div class="overlay-details">
+						<a href="#" class="close-overlay-btn">Close</a>
+						<div class="overlay-image">
+							<img src="{{this.image}}" alt="Book Cover">
+							<div class="back-color"></div>
+						</div>
+						<div class="overlay-desc activated">
+							<h2 class="overlay_title">{{this.name}}</h2>
+							<p class="author">by {{this.author}}</p>
+							<p class="published">{{this.year}}</p>
+							<p class="synopsis">{{this.description}}</p>
+							<a href="{{this.link}}" target="_blank" class="btn btn-info">Download</a>
+						</div>
+
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</section>
+</div>
+
+
+
+
+</div><!-- .animated -->
+<div class="main-overlay">
+	<div class="overlay-full"></div>
+</div>
+
+
+{{#contentFor 'pageScripts'}}
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/Shuffle/4.0.0/shuffle.min.js'></script>		
+	<script type="text/javascript" src="/assets/js/library.js"></script>
+{{/contentFor}}

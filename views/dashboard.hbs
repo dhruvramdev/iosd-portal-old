@@ -1,0 +1,257 @@
+{{#contentFor 'pageStyles'}}
+    <link rel="stylesheet" href="/assets/github-feed/octicons.css">
+    <link rel="stylesheet" href="/assets/github-feed/style.css">
+    <style>
+        /* Prevents slides from flashing */
+        #slides {
+            display: none;
+        }
+    </style>
+{{/contentFor}}
+
+
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card card-cascade narrower">
+
+                <!--Card image-->
+                <div class="view overlay">
+                    <img src="https://mdbootstrap.com/img/Photos/Categories/Components/2.jpg" class="img-fluid" alt="Material Design for Bootstrap - example photo">
+                    <a>
+                        <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                    </a>
+                </div>
+                <!--/.Card image-->
+
+                <!--Card content-->
+                <div class="card-body text-center">
+                    <!--Title-->
+                    <h4 class="card-title">
+                        <strong>{{user.name}}</strong>
+                    </h4>
+                    <h5>{{user.college}}</h5>
+
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere
+                        modi sunt, quod quibusdam.
+                    </p>
+
+                    <!--Facebook-->
+                    <a type="button" class="btn-floating btn-fb waves-effect waves-light">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <!--Twitter-->
+                    <a type="button" class="btn-floating btn-tw waves-effect waves-light">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <!--Google +-->
+                    <a type="button" class="btn-floating btn-dribbble waves-effect waves-light">
+                        <i class="fa fa-dribbble"></i>
+                    </a>
+
+                </div>
+                <!--/.Card content-->
+
+            </div>
+        </div>
+        <div class="col-md-9">
+            <!--<div class="card">-->
+                <!--<div class="card-header" style="background-color:white">-->
+                    <!--<strong class="card-title">Contribute</strong>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="col-lg-4 col-md-6">
+                <!--Card-->
+                <div class="card card-cascade wider">
+
+                    <!--Card image-->
+                    <div class="view gradient-card-header blue-gradient">
+                        <h2 class="h2-responsive mb-2">Benefit</h2>
+                        <div>
+                            <i class="fa fa-star"></i>40k
+                            <span class="px-2"></span>
+                            <i class="fa fa-code-fork"></i>340
+                        </div>
+                    </div>
+                    <!--/Card image-->
+
+                    <!--Card content-->
+                    <div class="card-body text-center">
+
+                        <p class="card-text mr-2 ml-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere
+                            modi sunt, quod quibusdam dignissimos neque rem nihil </p>
+
+                        <a href="#" class="orange-text mt-1 d-flex flex-row-reverse">
+                            <h5 class="waves-effect p-2">Contribute
+                                <i class="fa fa-chevron-right"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-cascade wider">
+
+                    <!--Card image-->
+                    <div class="view gradient-card-header blue-gradient">
+                        <h2 class="h2-responsive mb-2">Benefit</h2>
+                        <div>
+                            <i class="fa fa-star"></i>40k
+                            <span class="px-2"></span>
+                            <i class="fa fa-code-fork"></i>340
+                        </div>
+                    </div>
+                    <!--/Card image-->
+
+                    <!--Card content-->
+                    <div class="card-body text-center">
+
+                        <p class="card-text mr-2 ml-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere
+                            modi sunt, quod quibusdam dignissimos neque rem nihil </p>
+
+                        <a href="#" class="orange-text mt-1 d-flex flex-row-reverse">
+                            <h5 class="waves-effect p-2">Contribute
+                                <i class="fa fa-chevron-right"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    <!--/.Card content-->
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <!--Card-->
+                <div class="card card-cascade wider">
+
+                    <!--Card image-->
+                    <div class="view gradient-card-header blue-gradient">
+                        <h2 class="h2-responsive mb-2">Benefit</h2>
+                        <div>
+                            <i class="fa fa-star"></i>40k
+                            <span class="px-2"></span>
+                            <i class="fa fa-code-fork"></i>340
+                        </div>
+                    </div>
+                    <!--/Card image-->
+
+                    <!--Card content-->
+                    <div class="card-body text-center">
+
+                        <p class="card-text mr-2 ml-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere
+                            modi sunt, quod quibusdam dignissimos neque rem nihil </p>
+
+                        <a href="#" class="orange-text mt-1 d-flex flex-row-reverse">
+                            <h5 class="waves-effect p-2">Contribute
+                                <i class="fa fa-chevron-right"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="card card-cascade wider mb-4">
+
+                <!--Card image-->
+                <div class="view overlay">
+                    <img src="{{idcard}}" class="img-fluid">
+                    <a href="#">
+                        <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                    </a>
+                </div>
+                <!--/Card image-->
+
+                <!--Card content-->
+                <div class="card-body text-center">
+                    <h4 class="card-title"><strong>Membership Card</strong></h4>
+
+                </div>
+                <!--/.Card content-->
+
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Twitter Feed</h4>
+                    <div>
+                        <a class="twitter-timeline" data-height="80vh"
+                           href="https://twitter.com/iosdofficial?ref_src=twsrc%5Etfw">Tweets by iosdofficial</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <h4>Github Feed</h4>
+                    </div>
+                    <div id="githubfeed">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+
+                    <h5 class="m-t-0">Facebook Feed</h5>
+                    <div class="fb-page" data-href="https://www.facebook.com/iosdofficial" data-tabs="timeline"
+                         data-small-header="false" data-hide-cover="false"
+                         data-show-facepile="false" data-width="500">
+                        <blockquote cite="https://www.facebook.com/iosdofficial" class="fb-xfbml-parse-ignore"><a
+                                href="https://www.facebook.com/iosdofficial">International Organisation of Software
+                            Developers</a></blockquote>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div><h4>Instragram Feed</h4></div>
+                    <div>
+                        <!-- InstaWidget -->
+                        <a href="https://instawidget.net/v/user/iosdofficial"
+                           id="link-a897d9cbc46f93189342bafff44a5cb47b666e8d70c59ab8aab32b6d9022be89">@iosdofficial</a>
+                        <script src="https://instawidget.net/js/instawidget.js?u=a897d9cbc46f93189342bafff44a5cb47b666e8d70c59ab8aab32b6d9022be89&width=100%"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!-- .animated -->
+
+
+{{#contentFor 'pageScripts'}}
+
+    <script src="/assets/github-feed/moment.js"></script>
+    <script src="/assets/github-feed/mithril.min.js"></script>
+    <script src="/assets/github-feed/index.js"></script>
+
+
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_IN/sdk.js#xfbml=1&version=v2.11&appId=266925677039036';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+{{/contentFor}}

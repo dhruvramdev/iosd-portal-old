@@ -1,0 +1,132 @@
+<style>
+    #map {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<div>
+    <p><strong>Name</strong> : <span id="name"></span></p>
+    <p ><strong>Duty Start : </strong ><span id="dutyon"></span></p>
+    <p ><strong>Duty End : </strong><span id="dutyoff"></span></p>
+</div>
+<div id="map">
+
+</div>
+<script>
+    function animateCircle(line) {
+        let count = 0;
+        window.setInterval(function () {
+            count = (count + 1) % 200;
+
+            let icons = line.get('icons');
+            icons[0].offset = (count / 2) + '%';
+            line.set('icons', icons);
+        }, 60);
+    }
+
+
+    function initMap() {
+
+        let data = JSON.parse(decodeURI('{{{history}}}'));
+        console.log(data);
+
+        document.getElementById('dutyon').innerText = data.dutyon ;
+        document.getElementById('dutyoff').innerText = data.dutyoff ;
+        document.getElementById('name').innerText = data.username ;
+
+        let coords = data.track ;
+        coords = coords.filter((cord) => {
+            if(cord.lng){
+                return true ;
+            }
+            return false;
+
+        });
+        console.log(coords);
+
+        var latmean = 0;
+        var lngmean = 0;
+        var n = 0;
+
+
+
+
+        coords.forEach((cord) => {
+
+            if(cord.lng){
+                console.log(cord.lng)
+                latmean += cord.lat;
+                lngmean += cord.lng;
+                n += 1
+            }
+
+        });
+
+        latmean = latmean / n;
+        lngmean = lngmean / n;
+
+
+        var lineSymbol = {
+            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            scale: 8
+        };
+
+        var icon = [{
+            icon: lineSymbol,
+            offset: '0%'
+        }]
+
+        var path = new google.maps.Polyline({
+            path: coords,
+            geodesic: true,
+            strokeColor: '#000000',
+            icons: icon,
+            strokeOpacity: 1.0,
+            strokeWeight: 5,
+            zIndex: 999
+        });
+
+        console.log(latmean , lngmean)
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
+            center: {lat: latmean, lng: lngmean},
+            mapTypeId: 'terrain'
+        });
+        path.setMap(map);
+
+        coords.forEach((cord) => {
+
+            if(cord.lng){
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: cord.time
+                });
+
+                console.log(cord.lng)
+                var marker = new google.maps.Marker({
+                    position: {lat: cord.lat, lng: cord.lng},
+                    map: map,
+                    // icon : 'https://cdn2.iconfinder.com/data/icons/map-location-geo-points/154/border-dot-point-24.png' ,
+                    title: 'Location'
+                });
+                marker.addListener('mouseover', function () {
+                    infowindow.open(map, marker);
+                });
+
+                marker.addListener('mouseout', function () {
+                    infowindow.close();
+                });
+            }
+
+        });
+
+        animateCircle(path)
+
+
+    }
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-11T1ZkkHARTuAIDuTw7kOQlvpE68tmU&callback=initMap"></script>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <strong>Horizontal</strong> Form
+    </div>
+    <div class="card-body card-block">
+      <form method="post" class="form-horizontal">
+        {{#each book}}
+        <div class="row form-group">
+          <div class="col col-md-3" style="text-align: right">
+            <label class=" form-control-label">{{captialize @key }} :</label>
+          </div>
+          <div class="col-12 col-md-9">
+            <input type="text" name="{{@key}}" class="form-control" value="{{this}}">
+          </div>
+        </div>
+        {{/each}}
+        <button type="submit" class="btn btn-primary btn-sm">
+        <i class="fa fa-dot-circle-o"></i> Submit
+      </button>
+      
+      </form>
+    </div>
+  </div>  
+</div>

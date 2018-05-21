@@ -1,0 +1,98 @@
+<style>
+    /* Always set the map height explicitly to define the size of the div
+    * element that contains the map. */
+    #map {
+        height: 100%;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+
+<div id="map">
+
+</div>
+<script>
+
+    // This example creates a 2-pixel-wide red polyline showing the path of
+    // the first trans-Pacific flight between Oakland, CA, and Brisbane,
+    // Australia which was made by Charles Kingsford Smith.
+    function animateCircle(line) {
+        let count = 0;
+        window.setInterval(function () {
+            count = (count + 1) % 200;
+
+            let icons = line.get('icons');
+            icons[0].offset = (count / 2) + '%';
+            line.set('icons', icons);
+        }, 60);
+    }
+
+
+    function initMap() {
+
+        let coords = JSON.parse(decodeURI('{{{recent}}}'));
+        console.log(coords);
+
+
+        let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: {lat : 	28.644800 , lng : 77.216721},
+            mapTypeId: 'terrain'
+        });
+
+//        let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+//        let markers = coords.map(function(cord, i) {
+//            locations.push({lat: cord.lat, lng: cord.lng});
+//            return new google.maps.Marker({
+//                position: {lat: cord.lat, lng: cord.lng},
+//                label: labels[i % labels.length]
+//            });
+//        });
+        let markers = [];
+
+        coords.forEach((cord) => {
+            let infowindow = new google.maps.InfoWindow({
+                content: `Location for ${cord.username}. Last Updated at ${cord.time}`
+            });
+
+            let marker = new google.maps.Marker({
+                position: {lat: cord.lat, lng: cord.lng},
+                map: map,
+//                 icon : 'https://cdn2.iconfinder.com/data/icons/map-location-geo-points/154/border-dot-point-24.png' ,
+                title: 'Location'
+            });
+
+            markers.push(marker);
+
+            marker.addListener('mouseover', function () {
+                infowindow.open(map, marker);
+            });
+
+            marker.addListener('mouseout', function () {
+                infowindow.close();
+            });
+        });
+
+
+        // Add a marker clusterer to manage the markers.
+        let markerCluster = new MarkerClusterer(map, markers,
+                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+
+
+
+    }
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-11T1ZkkHARTuAIDuTw7kOQlvpE68tmU&callback=initMap"></script>
